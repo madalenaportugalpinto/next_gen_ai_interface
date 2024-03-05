@@ -10,9 +10,54 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_03_05_112323) do
+ActiveRecord::Schema[7.1].define(version: 2024_03_05_115910) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "example_fields", force: :cascade do |t|
+    t.string "key"
+    t.string "value"
+    t.bigint "example_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["example_id"], name: "index_example_fields_on_example_id"
+  end
+
+  create_table "examples", force: :cascade do |t|
+    t.text "content"
+    t.bigint "template_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["template_id"], name: "index_examples_on_template_id"
+  end
+
+  create_table "input_fields", force: :cascade do |t|
+    t.string "key"
+    t.string "value"
+    t.bigint "template_id", null: false
+    t.bigint "output_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["output_id"], name: "index_input_fields_on_output_id"
+    t.index ["template_id"], name: "index_input_fields_on_template_id"
+  end
+
+  create_table "outputs", force: :cascade do |t|
+    t.text "prompt"
+    t.text "content"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "templates", force: :cascade do |t|
+    t.string "title"
+    t.text "description"
+    t.string "prompt"
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_templates_on_user_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -26,4 +71,9 @@ ActiveRecord::Schema[7.1].define(version: 2024_03_05_112323) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "example_fields", "examples"
+  add_foreign_key "examples", "templates"
+  add_foreign_key "input_fields", "outputs"
+  add_foreign_key "input_fields", "templates"
+  add_foreign_key "templates", "users"
 end
