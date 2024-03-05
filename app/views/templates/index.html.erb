@@ -1,0 +1,16 @@
+<h1>Templates</h1>
+<div id="template">
+  <% @templates.each do |template| %>
+     <p>
+    <strong>Title:</strong>
+    <%= template.title %>
+  </p>
+  <p>
+    <strong>Description:</strong>
+    <%= template.description %>
+  </p>
+    <p>
+      <%= link_to "Show this template", template %>
+    </p>
+  <% end %>
+</div>
