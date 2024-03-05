@@ -1,0 +1,12 @@
+.my-btn {
+  color: white;
+  border-radius: 10px;
+  background: $primary;
+  transition: 0.3s;
+  font-size: 16px;
+}
+
+.my-btn:hover {
+  background: #0A37FF;
+  color: white;
+}
