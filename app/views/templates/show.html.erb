@@ -1,21 +1,44 @@
-index-page
+
+
+  <div class="container my-5">
 <h1 class="display-1"><%= @template.title  %></h1>
-<p><%= @template.description %></p>
-
-
-  <div class="container my-5">
-    <h2><%= @template.title  %></h2>
-    <p><%= @template.description %></p>
+    <h2 class="display-2"><%= @template.description %></h2>
+  </div>
+  <div class="container my-5 ">
+    <h2 class="display-2 my-3">History</h2>
+    <button type="button" class="btn btn-light margin-right-2 text-color">
+        <i class="fa-regular fa-file p-1"></i> Version_2021
+    </button>
+      <button type="button" class="btn btn-light margin-right-2 text-color">
+        <i class="fa-regular fa-file p-1"></i> Version_2021
+    </button>
+      <button type="button" class="btn btn-light margin-right-2 text-color">
+        <i class="fa-regular fa-file p-1"></i> Version_2021
+    </button>
   </div>
   <div class="container my-5">
-    <h2>History</h2>
-    <p>File</p>
-  </div>
-  <div class="container my-5">
-    <h2>Template preview</h2>
+    <h2 class="display-2">Template preview</h2>
+    <div class="my-2">
+    <div class="card col-12 bg-light custom-shadow p-3 rounded my-3">
     <p><%= @template.example.content if @template.example %></p>
-  </div>
+    </div>
+</div>
+<div class="my-5">
+    <h2 class="display-2 ">Input data</h2>
+<button type="button" class="btn btn-secondary mr-5">
+Name <span aria-hidden="true">&times;</span>
+</button>
+<button type="button" class="btn btn-secondary">
+Year <span aria-hidden="true">&times;</span>
+</button>
 
-    <%= link_to "Edit template", edit_template_path %>
+<button type="button" class="btn btn-secondary">
+Badge <span aria-hidden="true">&times;</span>
+</button>
+
+</div>
+<button class="btn btn-primary">Use template</button>
+    <%= link_to "Edit template", edit_template_path, :class => "btn my-btn-light" %>
+</div>
 
 </div>
