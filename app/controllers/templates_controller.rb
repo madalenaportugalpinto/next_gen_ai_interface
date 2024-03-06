@@ -20,7 +20,7 @@ class TemplatesController < ApplicationController
     @template = Template.new(template_params)
     @template.user_id = current_user.id
     @template.save
-    redirect_to templates_path
+    redirect_to new_template_example_path(@template)
   end
 
   def update
