@@ -6,7 +6,32 @@
   font-size: 16px;
 }
 
+.my-btn-home {
+  color: white;
+  border-radius: 10px;
+  background: $primary;
+  transition: 0.3s;
+  font-size: 16px;
+  text-decoration: none;
+  padding: 15px 20px;
+  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.5);
+  cursor: pointer;
+  outline: none;
+  opacity: 0.7;
+}
+
+.my-btn-home:hover {
+  background: #0A37FF;
+  color: white;
+}
+
+
 .my-btn:hover {
   background: #0A37FF;
   color: white;
+}
+
+.btn-login {
+  width: 100%;
+  margin-bottom: 20px
 }
