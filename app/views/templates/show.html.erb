@@ -13,7 +13,7 @@ index-page
   </div>
   <div class="container my-5">
     <h2>Template preview</h2>
-    <p><%= @template.example.content if @template.example %></p>
+    <p><%= link_to 'example',edit_example_path(@template.example) if @template.example %></p>
   </div>
 
     <%= link_to "Edit template", edit_template_path %>

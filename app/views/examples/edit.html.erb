@@ -1,4 +1,6 @@
-<%= simple_form_for [ @template, @example ] do |f| %>
+<h1 class="display-1">Edit template</h1>
+
+<%= simple_form_for @example do |f| %>
     <%= f.error_notification %>
     <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
 
@@ -9,3 +11,6 @@
 
     <%= f.submit class: 'btn btn-primary mt-3' %>
 <% end %>
+
+
+<br>
