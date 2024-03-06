@@ -1,16 +1,17 @@
+<div class="form-login">
 <%= simple_form_for(@template) do |f| %>
     <%= f.error_notification %>
     <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
 
-    <div class="form-inputs">
-      <%= f.label :title %>
-      <%= f.text_field :title, class: 'form-control' %>
+    <div class="form-inputs mt-5">
+      <%= f.text_field :title, class: 'form-control', placeholder: "Add Template Title " %>
     </div>
 
-    <div class="form-inputs">
-      <%= f.label :description %>
-      <%= f.text_area :description, class: 'form-control' %>
+    <div class="form-inputs mt-5">
+      <%= f.text_area :description, class: 'form-control', placeholder: "Add Description " %>
     </div>
 
-  <%= f.submit class: 'btn btn-primary mt-3' %>
+
+ <%= f.submit class: 'my-btn mt-3 mb-3' %>
 <% end %>
+</div>
