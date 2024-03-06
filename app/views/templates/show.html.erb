@@ -1,4 +1,19 @@
-<h1><%= @template.title  %></h1>
-<p><%= @template.description %></p>
+<div class="container">
+  <h1>Annual Template</h1>
 
- <%= link_to "Edit template", edit_template_path %>
+  <div class="container my-5">
+    <h2><%= @template.title  %></h2>
+    <p><%= @template.description %></p>
+  </div>
+  <div class="container my-5">
+    <h2>History</h2>
+    <p>File</p>
+  </div>
+  <div class="container my-5">
+    <h2>Template preview</h2>
+    <p>@tempale.example.content</p>
+  </div>
+
+    <%= link_to "Edit template", edit_template_path %>
+
+</div>
