@@ -1,20 +1,24 @@
 <div class="container mt-5">
-  <h1>Templates</h1>
+  <h1 class="display-1">Templates</h1>
   <div id="template">
   <% @templates.each do |template| %>
-     <p>
-    <strong>Title:</strong>
-    <%= template.title %>
-  </p>
-  <p>
-    <strong>Description:</strong>
-    <%= template.description %>
-  </p>
-    <p>
-      <%= link_to "Show this template", template %>
-    </p>
+
+    <div class="card flex-md-row mb-3 h-md-250 text-white bg-primary col-12 d-flex justify-content-between p-2 custom-shadow ">
+      <div class="card-body d-flex flex-column align-items-start">
+        <h5 class="card-title"><%= template.title %></h5>
+        <p class="card-text"><%= template.description %></p>
+      </div>
+      <div class="card-body d-flex align-items-end justify-content-end align-items-center">
+        <%= link_to "Show this template", template, :class => "btn my-btn-light"  %>
+    </div>
+    </div></>
   <% end %>
   </div>
+index-page
+    <div class="card h-md-250 text-white background col-12 d-flex justify-content-center align-items-center p-4">
+    <div>
+      <%= link_to "New Template", new_template_path, :class => "btn btn-primary " %>
+      </div>
+    </div>
 
-  <%= link_to "New Template", new_template_path %>
 </div>

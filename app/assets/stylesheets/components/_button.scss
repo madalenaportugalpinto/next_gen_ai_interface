@@ -1,10 +1,19 @@
+.btn {
+  font-weight: 700;
+}
+
 .my-btn {
   color: white;
-  border-radius: 10px;
+  border-radius: 10px !important;
   background: $primary;
   transition: 0.3s;
   font-size: 16px;
+
+  font-weight: 700;
+
+
   padding: 10px 15px;
+
 }
 
 .my-btn-home {
@@ -35,4 +44,19 @@
 .btn-login {
   width: 100%;
   margin-bottom: 20px
+}
+
+
+.my-btn-light {
+  color: $primary;
+  background: white;
+  border-radius: 10px;
+  transition: 0.3s;
+  font-size: 16px;
+}
+
+.my-btn-light:hover {
+  color: $hover-primary;
+  background: $text-color;
+  transition: 0.3s;
 }

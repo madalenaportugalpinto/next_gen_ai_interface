@@ -7,7 +7,7 @@
 // General style
 $font-family-sans-serif: $body-font;
 $headings-font-family:   $headers-font;
-$body-bg:                $light-gray;
+$body-bg:                $custom-bg;
 $font-size-base:         1rem;
 
 // Colors
@@ -19,8 +19,20 @@ $danger:     $red;
 $warning:    $orange;
 
 // Buttons & inputs' radius
-$border-radius:    2px;
-$border-radius-lg: 2px;
-$border-radius-sm: 2px;
+$border-radius:    8px;
+$border-radius-lg: 16px;
+$border-radius-sm: 4px;
 
 // Override other variables below!
+
+
+$display-font-sizes: (
+  1: 4rem,
+  2: 2rem,
+  3: 4rem,
+  4: 3.5rem,
+  5: 3rem,
+  6: 2.5rem
+);
+
+$display-font-weight: 700;
