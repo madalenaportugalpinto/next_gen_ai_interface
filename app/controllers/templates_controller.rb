@@ -27,7 +27,7 @@ class TemplatesController < ApplicationController
   def update
     @template = Template.find(params[:id])
     if @template.update(template_params)
-      redirect_to @template, notice: 'Template was successfully updated.'
+      redirect_to edit_example_path(@template), notice: 'Template was successfully updated.'
     else
       render :edit
     end
