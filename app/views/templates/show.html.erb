@@ -26,21 +26,16 @@
 </div>
 <div class="my-5">
     <h2 class="display-2 ">Input data</h2>
+<% @example_fields.each do |key, value| %>
 <button type="button" class="btn btn-secondary mr-5">
-Name <span aria-hidden="true"></span>
+<%=  key.key.capitalize  %>
 </button>
-<button type="button" class="btn btn-secondary">
-Year <span aria-hidden="true"></span>
-</button>
-
-<button type="button" class="btn btn-secondary">
-Badge <span aria-hidden="true"></span>
-</button>
+<% end %>
 
 </div>
 <button class="btn btn-primary">Use template</button>
     <%= link_to "Edit template", edit_template_path, :class => "btn my-btn-light" %>
-</div>
     <p><%= link_to 'example',edit_example_path(@template.example) if @template.example %></p>
+</div>
 
 </div>
