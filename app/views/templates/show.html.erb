@@ -44,3 +44,10 @@ Badge <span aria-hidden="true"></span>
     <p><%= link_to 'example',edit_example_path(@template.example) if @template.example %></p>
 
 </div>
+
+
+<%# just to text %>
+
+<% @template.outputs.each do |output| %>
+  <%= link_to "output test #{output.id}", edit_output_path(output)%>
+<% end %>

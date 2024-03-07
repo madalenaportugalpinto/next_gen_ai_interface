@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_03_05_115910) do
+ActiveRecord::Schema[7.1].define(version: 2024_03_07_151226) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -34,12 +34,10 @@ ActiveRecord::Schema[7.1].define(version: 2024_03_05_115910) do
   create_table "input_fields", force: :cascade do |t|
     t.string "key"
     t.string "value"
-    t.bigint "template_id", null: false
     t.bigint "output_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["output_id"], name: "index_input_fields_on_output_id"
-    t.index ["template_id"], name: "index_input_fields_on_template_id"
   end
 
   create_table "outputs", force: :cascade do |t|
@@ -47,6 +45,8 @@ ActiveRecord::Schema[7.1].define(version: 2024_03_05_115910) do
     t.text "content"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "template_id", null: false
+    t.index ["template_id"], name: "index_outputs_on_template_id"
   end
 
   create_table "templates", force: :cascade do |t|
@@ -74,6 +74,6 @@ ActiveRecord::Schema[7.1].define(version: 2024_03_05_115910) do
   add_foreign_key "example_fields", "examples"
   add_foreign_key "examples", "templates"
   add_foreign_key "input_fields", "outputs"
-  add_foreign_key "input_fields", "templates"
+  add_foreign_key "outputs", "templates"
   add_foreign_key "templates", "users"
 end
