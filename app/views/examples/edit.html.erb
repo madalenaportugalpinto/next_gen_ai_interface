@@ -1,16 +1,49 @@
-<h1 class="display-1">Edit template</h1>
+  <div class="container my-5">
+<h1 class="display-1"><%= @template.title  %>
+<%= link_to edit_template_path do |f| %>
+ <small>  <i class="fa-solid fa-pen"></i></small>
+  <% end %>
+  </h1>
+
+    <h2 class="display-2"><%= @template.description %>
+    <%= link_to edit_template_path do |f| %>
+ <small>  <i class="fa-solid fa-pen"></i></small>
+  <% end %>
+    </h2>
+  </div>
+
+  <div class="container my-5">
+
+    <h2 class="display-2">Template preview</h2>
+    <div class="my-2">
 
 <%= simple_form_for @example do |f| %>
     <%= f.error_notification %>
     <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
 
-    <div class="form-inputs">
-      <%= f.label :content %>
-      <%= f.text_field :content, class: 'form-control' %>
-    </div>
+      <%= f.text_field :content, class: 'form-control card col-12 bg-light custom-shadow p-3 rounded my-3 ' %>
 
-    <%= f.submit class: 'btn btn-primary mt-3' %>
+
+</div>
+
+<div class="my-5">
+    <h2 class="display-2 ">Input data</h2>
+<button type="button" class="btn btn-secondary mr-5">
+Name <span aria-hidden="true">&times;</span>
+</button>
+<button type="button" class="btn btn-secondary">
+Year <span aria-hidden="true">&times;</span>
+</button>
+
+<button type="button" class="btn btn-secondary">
+Badge <span aria-hidden="true">&times;</span>
+</button>
+
+</div>
+    <%= f.submit class: 'btn btn-primary', value: "Save template" %>
 <% end %>
+<%= link_to 'Example', (edit_example_path(@template.example) if @template.example),  :class => "btn my-btn-light" %>
+</div>
+</div>
 
-
-<br>
+</div>

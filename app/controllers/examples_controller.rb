@@ -7,6 +7,7 @@ class ExamplesController < ApplicationController
 
   def edit
     @example = Example.find(params[:id])
+    @template = Template.find(params[:id])
   end
 
   def create
@@ -17,7 +18,7 @@ class ExamplesController < ApplicationController
   end
 
   def update
-    
+
   end
 
   private

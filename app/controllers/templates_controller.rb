@@ -7,8 +7,6 @@ class TemplatesController < ApplicationController
   def show
     @template = Template.find(params[:id])
     @example = @template.example if @template.example
-
-
   end
 
   def new
