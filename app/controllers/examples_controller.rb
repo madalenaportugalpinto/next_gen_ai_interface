@@ -7,7 +7,8 @@ class ExamplesController < ApplicationController
 
   def edit
     @example = Example.find(params[:id])
-    @template = Template.find(params[:id])
+    @template = @example.template
+    @example_fields = @example.example_fields
   end
 
   def create
