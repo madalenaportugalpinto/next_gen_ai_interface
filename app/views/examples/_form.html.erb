@@ -3,9 +3,9 @@
     <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
 
     <div class="form-inputs">
-      <%= f.label :content %>
-      <%= f.text_field :content, class: 'form-control' %>
+
+      <%= f.text_area :content, class: 'form-control bg-light pb-5', placeholder:"Add an example the text" %>
     </div>
 
-    <%= f.submit class: 'btn btn-primary mt-3' %>
+    <%= f.submit class: 'btn btn-primary mt-5' %>
 <% end %>
