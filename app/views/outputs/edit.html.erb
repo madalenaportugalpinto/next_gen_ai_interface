@@ -1,22 +1,29 @@
-<h1>Create Text</h1>
-
-<div class="container col-6">
+<div class="container mt-5">
+<h1 class="display-1">Create Text</h1>
+<div class="row">
+<div class="col-6">
 <% @input_fields.each do |input_field| %>
-  <h3> <%= input_field.key %> </h3>
+  <p> <%= input_field.key %> </p>
     <%= simple_form_for(input_field) do |f| %>
       <%= f.error_notification %>
       <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
-
-      <div class="form-inputs mt-5">
-        <%= f.text_field :value, class: 'form-control fs-1  bg-light rounded-3', placeholder: " Your #{input_field.key} " %>
+ <div class="row mb-3">
+      <div class="form-inputs col-8">
+        <%= f.text_field :value, class: 'form-control bg-light rounded-2 custom-shaddow', placeholder: " Your #{input_field.key} " %>
       </div>
-    <%= f.submit class: 'my-btn mt-3 mb-3' %>
+      <div class="col-4">
+    <%= f.submit class: 'btn btn-secondary' %>
+    </div>
+      </div>
     <% end %>
 
 <% end %>
 </div>
 
-<div class="container col-6">
+<div class="col-6 card bg-light p-3 rounded">
+<p>
 <%= @template.example.content %>
+</p>
+</div>
 </div>
 </div>
