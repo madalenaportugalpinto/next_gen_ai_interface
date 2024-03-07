@@ -39,3 +39,10 @@
 </div>
 
 </div>
+
+
+<%# just to text %>
+
+<% @template.outputs.each do |output| %>
+  <%= link_to "output test #{output.id}", edit_output_path(output)%>
+<% end %>
