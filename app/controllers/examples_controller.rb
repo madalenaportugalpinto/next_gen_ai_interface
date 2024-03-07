@@ -9,6 +9,8 @@ class ExamplesController < ApplicationController
     @example = Example.find(params[:id])
     @template = @example.template
     @example_fields = @example.example_fields
+    p "************ **************"
+    p @example_fields
   end
 
   def create
@@ -20,6 +22,7 @@ class ExamplesController < ApplicationController
   end
 
   def update
+
     @example = Example.find(params[:id])
     @template = @example.template
     
@@ -31,6 +34,7 @@ class ExamplesController < ApplicationController
       InputField.create(output: @output, key: example_field.key)
     end
     redirect_to edit_output_path(@output)
+
   end
 
   private
