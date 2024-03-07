@@ -1,18 +1,24 @@
 class ExamplesController < ApplicationController
 
-  def index
-  end
-
   def new
     @template = Template.find(params[:template_id])
     @example = Example.new
+  end
+
+  def edit
+    @example = Example.find(params[:id])
+    @template = Template.find(params[:id])
   end
 
   def create
     @example = Example.new(example_params)
     @example.template = Template.find(params[:template_id])
     @example.save!
-    redirect_to templates_path(@template)
+    redirect_to edit_example_path(@example)
+  end
+
+  def update
+
   end
 
   private

@@ -4,6 +4,8 @@ Rails.application.routes.draw do
     resources :examples, only: [:new,:create]
   end
 
+  resources :examples, only: [ :edit, :update]
+
   root to: "pages#home"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 

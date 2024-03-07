@@ -4,13 +4,13 @@
     <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
 
     <div class="form-inputs mt-5">
-      <%= f.text_field :title, class: 'form-control fs-1 fw-lighter bg-light rounded-3', placeholder: "Add Template Title " %>
+      <%= f.text_field :title, class: 'form-control fs-1  bg-light rounded-3', placeholder: "Add Template Title " %>
     </div>
 
     <div class="form-inputs mt-5">
       <%= f.text_area :description, class: 'form-control bg-light rounded-3', placeholder: "Add Description " %>
     </div>
 
-
+    
  <%= f.submit class: 'my-btn mt-3 mb-3' %>
 <% end %>
