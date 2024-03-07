@@ -4,7 +4,10 @@ Rails.application.routes.draw do
     resources :examples, only: [:new,:create]
   end
 
-  resources :examples, only: [ :edit, :update]
+  resources :examples, only: [:edit, :update]
+  resources :outputs, only: [:edit, :update, :show]
+
+  resources :input_fields, only: [:update, :edit]
 
   root to: "pages#home"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html

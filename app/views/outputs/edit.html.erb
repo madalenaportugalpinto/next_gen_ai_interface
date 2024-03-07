@@ -1,0 +1,22 @@
+<h1>Create Text</h1>
+
+<div class="container col-6">
+<% @input_fields.each do |input_field| %>
+  <h3> <%= input_field.key %> </h3>
+    <%= simple_form_for(input_field) do |f| %>
+      <%= f.error_notification %>
+      <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+
+      <div class="form-inputs mt-5">
+        <%= f.text_field :value, class: 'form-control fs-1  bg-light rounded-3', placeholder: " Your #{input_field.key} " %>
+      </div>
+    <%= f.submit class: 'my-btn mt-3 mb-3' %>
+    <% end %>
+
+<% end %>
+</div>
+
+<div class="container col-6">
+<%= @template.example.content %>
+</div>
+</div>
