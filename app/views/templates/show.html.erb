@@ -17,6 +17,7 @@
     </button>
   </div>
   <div class="container my-5">
+
     <h2 class="display-2">Template preview</h2>
     <div class="my-2">
     <div class="card col-12 bg-light custom-shadow p-3 rounded my-3">
@@ -40,5 +41,6 @@ Badge <span aria-hidden="true">&times;</span>
 <button class="btn btn-primary">Use template</button>
     <%= link_to "Edit template", edit_template_path, :class => "btn my-btn-light" %>
 </div>
+    <p><%= link_to 'example',edit_example_path(@template.example) if @template.example %></p>
 
 </div>
