@@ -24,10 +24,6 @@ class ExamplesController < ApplicationController
   def update
     @example = Example.find(params[:id])
     @template = @example.template
-
-    puts "!!!!!!!! !!!!!!!!"
-    p @example.example_fields
-
     ## quando o example for updated ou seja finalizado
     #criamos um output
     @output = Output.create(template: @template)
