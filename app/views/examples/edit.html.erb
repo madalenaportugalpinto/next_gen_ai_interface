@@ -1,9 +1,10 @@
-<div class="container my-5">
-  <h1 class="display-1"><%= @template.title  %>
+<div class="container my-5 ">
+  <h1 class="display-1" style="display:inline"><%= @template.title  %></h1>
+  <h2 style="display:inline">
   <%= link_to edit_template_path do |f| %>
     <small>  <i class="fa-solid fa-pen"></i></small>
   <% end %>
-  </h1>
+  </h2>
 
   <h2 class="display-2"><%= @template.description %>
   <%= link_to edit_template_path do |f| %>
@@ -31,9 +32,8 @@
                               input_html: { class: 'tag-selector' },
                               item_wrapper_class: 'tag-item' %>
     </div>
-        <%= f.submit class: 'btn btn-primary', value: "Save template" %>
+        <%= f.submit class: 'btn btn-primary', value: "Save & use template" %>
   <% end %>
-  <%= link_to 'Example', (edit_example_path(@template.example) if @template.example),  :class => "btn my-btn-light" %>
   </div>
   </div>
 

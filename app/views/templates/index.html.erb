@@ -1,5 +1,11 @@
 <div class="container mt-5">
   <h1 class="display-1">Templates</h1>
+      <div class="card h-md-250 text-white bg-white  col-12 d-flex justify-content-center align-items-center p-4 mb-3 ">
+    <div>
+      <%= link_to "New Template", new_template_path, :class => "btn btn-primary " %>
+      </div>
+    </div>
+
   <div id="template">
   <% @templates.each do |template| %>
 
@@ -9,15 +15,13 @@
         <p class="card-text"><%= template.description %></p>
       </div>
       <div class="card-body d-flex align-items-end justify-content-end align-items-center">
-        <%= link_to "Show this template", template, :class => "btn my-btn-light"  %>
+        <%= link_to template do |f| %>
+      <div class="btn my-btn-light m-2"><i class="fa-regular fa-eye "></i></div>
+  <% end %>
+        <%= link_to "Create text", edit_output_path(template), :class => "btn my-btn-light"  %>
     </div>
     </div></>
   <% end %>
   </div>
-    <div class="card h-md-250 text-white background col-12 d-flex justify-content-center align-items-center p-4">
-    <div>
-      <%= link_to "New Template", new_template_path, :class => "btn btn-primary " %>
-      </div>
-    </div>
 
 </div>
