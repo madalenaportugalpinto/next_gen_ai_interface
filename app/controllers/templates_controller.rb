@@ -7,7 +7,6 @@ class TemplatesController < ApplicationController
   def show
     @template = Template.find(params[:id])
     @example = @template.example if @template.example
-    p "********  ***************  ***************  ***************  *******"
     @example_fields = @template.example_fields
     p @example_fields
   end
