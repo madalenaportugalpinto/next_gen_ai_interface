@@ -18,7 +18,7 @@ class OutputsController < ApplicationController
     #gravar as alteraçoes
     @output = Output.find(params[:id])
     @template = @output.template
-    generate_output_content
+    @output.generate_output_content
     redirect_to @output
   end
 end
