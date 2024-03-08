@@ -3,7 +3,7 @@
 <div class="row">
 <div class="col-6">
 <% @input_fields.each do |input_field| %>
-  <p> <%= input_field.key %> </p>
+  <p> <%= input_field.key.capitalize %> </p>
     <%= simple_form_for(input_field) do |f| %>
       <%= f.error_notification %>
       <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
@@ -18,11 +18,15 @@
     <% end %>
 
 <% end %>
+<%= simple_form_for @output do |f| %>
+    <%= f.submit "Create Text" ,class: 'btn btn-secondary' %>
+<% end %>
 </div>
+
 
 <div class="col-6 card bg-light p-3 rounded">
 <p>
-<%= @template.example.content %>
+<%= @example.content %>
 </p>
 </div>
 </div>

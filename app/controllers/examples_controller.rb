@@ -18,6 +18,10 @@ class ExamplesController < ApplicationController
     @example.template = Template.find(params[:template_id])
     @example.save!
 
+    @output = Output.create(template: @template)
+    #aqui vamos fazer @output.content = conteudo com as keys
+
+
     redirect_to edit_example_path(@example)
   end
 

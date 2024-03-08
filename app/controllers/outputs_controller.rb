@@ -3,7 +3,6 @@ class OutputsController < ApplicationController
   def show
     #vemos o output final
     @output = Output.find(params[:id])
-    @output.content
   end
 
   def edit
@@ -11,11 +10,15 @@ class OutputsController < ApplicationController
     # e dar valores aos input fields (já devem ter keys)
     @output = Output.find(params[:id])
     @template = @output.template
+    @example = @template.example
     @input_fields = @output.input_fields
   end
 
   def update
     #gravar as alteraçoes
-    @output.content = generate_output
+    @output = Output.find(params[:id])
+    @template = @output.template
+    generate_output_content
+    redirect_to @output
   end
 end
