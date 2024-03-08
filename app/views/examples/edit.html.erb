@@ -22,15 +22,14 @@
     <div class="my-5">
       <h2 class="display-2 ">Input data</h2>
 
-    <%=   f.collection_check_boxes :example_fields,
-                                    @example.example_fields,
-                                    :id,
-                                    :key,
-                                    include_hidden: false,
-            collection_wrapper_tag: 'div',
-            collection_wrapper_class: 'category-wrapper',
-            item_wrapper_class: 'category-item',
-            input_html: {class: 'category-selector'} %>
+<%= f.collection_check_boxes :example_fields,
+                              @example.example_fields,
+                              :id,
+                              :key,
+                              include_hidden: false,
+                              as: :check_boxes,
+                              input_html: { class: 'tag-selector' },
+                              item_wrapper_class: 'tag-item' %>
     </div>
         <%= f.submit class: 'btn btn-primary', value: "Save template" %>
   <% end %>
