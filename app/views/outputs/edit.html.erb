@@ -1,33 +1,30 @@
 <div class="container mt-5">
-<h1 class="display-1">Create Text</h1>
-<div class="row">
-<div class="col-6">
-<% @input_fields.each do |input_field| %>
-  <p> <%= input_field.key.capitalize %> </p>
-    <%= simple_form_for(input_field) do |f| %>
-      <%= f.error_notification %>
-      <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
- <div class="row mb-3">
-      <div class="form-inputs col-8">
-        <%= f.text_field :value, class: 'form-control bg-light rounded-2 custom-shaddow', placeholder: " Your #{input_field.key} " %>
-      </div>
-      <div class="col-4">
-    <%= f.submit class: 'btn btn-secondary' %>
+  <h1 class="display-1">Create Text</h1>
+  <div class="row">
+    <div class="col-6">
+      <% @input_fields.each do |input_field| %>
+        <p> <%= input_field.key.capitalize %> </p>
+          <%= simple_form_for(input_field) do |f| %>
+            <%= f.error_notification %>
+            <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+            <div class="row mb-3">
+              <div class="form-inputs col-8">
+                <%= f.text_field :value, class: 'form-control bg-light rounded-2 custom-shaddow', placeholder: " Your #{input_field.key} " %>
+              </div>
+              <div class="col-4">
+                <%= f.submit class: 'btn btn-secondary' %>
+              </div>
+            </div>
+          <% end %>
+      <% end %>
+      <%= simple_form_for @output do |f| %>
+        <%= f.submit "Create Text" ,class: 'btn btn-secondary' %>
+        <%= link_to 'Back', :back, class: 'btn btn-secondary' %>
+      <% end %>
+
     </div>
-      </div>
-    <% end %>
-
-<% end %>
-<%= simple_form_for @output do |f| %>
-    <%= f.submit "Create Text" ,class: 'btn btn-secondary' %>
-<% end %>
-</div>
-
-
-<div class="col-6 card bg-light p-3 rounded">
-<p>
-<%= @example.content %>
-</p>
-</div>
-</div>
+    <div class="col-6 card bg-light p-3 rounded">
+      <p><%= @example.content %></p>
+    </div>
+  </div>
 </div>
