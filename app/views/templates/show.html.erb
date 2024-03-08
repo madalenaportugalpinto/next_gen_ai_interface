@@ -25,7 +25,7 @@
     </div>
 </div>
 
-    <%= link_to "Use template", (edit_output_path(@template) if @template), :class => "btn btn-primary" %>
+    <%= link_to "Use template", (edit_output_path(@template.outputs.first) if @template.outputs.first), :class => "btn btn-primary" %>
     <%= link_to "Edit template", (edit_example_path(@template.example) if @template.example), :class => "btn my-btn-light " %>
 </div>
 

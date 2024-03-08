@@ -11,7 +11,7 @@ class OutputsController < ApplicationController
     @output = Output.find(params[:id])
     @template = @output.template
     @example = @template.example
-    @input_fields = @output.input_fields
+    @input_fields = @output.input_fields.order(key: :desc)
   end
 
   def update
