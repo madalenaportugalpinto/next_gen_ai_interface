@@ -18,7 +18,11 @@
         <%= link_to template do |f| %>
       <div class="btn my-btn-light m-2"><i class="fa-regular fa-eye "></i></div>
   <% end %>
-        <%= link_to "Create text", edit_output_path(template), :class => "btn my-btn-light"  %>
+        <% if template.outputs.blank? %>
+          <%= link_to "Create text", template_path(template), :class => "btn my-btn-light"  %>
+        <% else %>
+          <%= link_to "Create text", edit_output_path(template.outputs.first), :class => "btn my-btn-light"  %>
+        <% end %>
     </div>
     </div></>
   <% end %>
