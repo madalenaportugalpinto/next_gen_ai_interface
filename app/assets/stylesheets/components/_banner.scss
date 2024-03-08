@@ -8,6 +8,14 @@
   padding: 30vh 0;
   opacity: 0.8;
   text-align: center;
+
+}
+
+.fullpagebackground {
+  position: fixed;
+  background-color: rgb(208, 226, 246);
+  height: 100vh;
+  width: 100vw;
 }
 
 
@@ -43,4 +51,3 @@
   background: linear-gradient(#147EFF, #0F67DA);
   color: white;
 }
-

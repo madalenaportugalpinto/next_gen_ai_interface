@@ -12,8 +12,8 @@ puts "Cleaning database..."
 Template.destroy_all
 
 puts "Creating template..."
-luca = {title: "Luca", description: "First template", user_id: User.last.id}
-tommy = {title: "Tommy", description: "Second template", user_id: User.last.id}
+luca = {title: "Tommy", description: "Second template", user_id: User.last.id}
+tommy = {title: "shammi", description: "First template", user_id: User.last.id}
 
 [luca, tommy].each do |attributes|
   template = Template.create!(attributes)
