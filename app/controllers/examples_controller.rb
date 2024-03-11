@@ -34,9 +34,6 @@ class ExamplesController < ApplicationController
     # a seguir criamos os input fields baseados nos example_fields mas sem o value
     @example.example_fields.each do |example_field|
       p params[:example][:example_fields].include? example_field.key
-
-      puts "***** *******", example_field.key, example_field.id
-
       InputField.create(output: @output, key: example_field.key)
     end
     redirect_to edit_output_path(@output)

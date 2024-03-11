@@ -19,7 +19,7 @@
       <% end %>
       <%= simple_form_for @output do |f| %>
         <%= f.submit "Create Text" ,class: 'btn btn-secondary' %>
-        <%= link_to 'Back', :back, class: 'btn btn-secondary' %>
+        <%= link_to 'Back', template_path(@template), class: 'btn btn-secondary' %>
       <% end %>
 
     </div>
