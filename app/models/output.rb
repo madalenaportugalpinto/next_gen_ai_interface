@@ -2,6 +2,7 @@ class Output < ApplicationRecord
   belongs_to :template
   has_many :input_fields, dependent: :destroy
 
+  accepts_nested_attributes_for :input_fields
 
   def parse_input_fields
     hash_input_fields = {}

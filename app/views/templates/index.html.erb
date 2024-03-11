@@ -1,31 +1,27 @@
 <div class="container mt-5">
   <h1 class="display-1">Templates</h1>
-      <div class="card h-md-250 text-white bg-white  col-12 d-flex justify-content-center align-items-center p-4 mb-3 ">
-    <div>
-      <%= link_to "New Template", new_template_path, :class => "btn btn-primary " %>
-      </div>
-    </div>
-
-  <div id="template">
-  <% @templates.each do |template| %>
-
-    <div class="card flex-md-row mb-3 h-md-250 text-white bg-primary col-12 d-flex justify-content-between p-2 custom-shadow ">
-      <div class="card-body d-flex flex-column align-items-start">
-        <h5 class="card-title"><%= template.title %></h5>
-        <p class="card-text"><%= template.description %></p>
-      </div>
-      <div class="card-body d-flex align-items-end justify-content-end align-items-center">
-        <%= link_to template do |f| %>
-      <div class="btn my-btn-light m-2"><i class="fa-regular fa-eye "></i></div>
-  <% end %>
-        <% if template.outputs.blank? %>
-          <%= link_to "Create text", template_path(template), :class => "btn my-btn-light"  %>
-        <% else %>
-          <%= link_to "Create text", edit_output_path(template.outputs.first), :class => "btn my-btn-light"  %>
-        <% end %>
-    </div>
-    </div></>
-  <% end %>
+  <div class="card h-md-250 text-white bg-white  col-12 d-flex justify-content-center align-items-center p-4 mb-3 ">
+    <%= link_to "New Template", new_template_path, :class => "btn btn-primary " %>
   </div>
 
+  <div id="template">
+    <% @templates.each do |template| %>
+
+      <div class="card flex-md-row mb-3 h-md-250 text-white bg-primary col-12 d-flex justify-content-between p-2 custom-shadow ">
+        <div class="card-body d-flex flex-column align-items-start">
+          <h5 class="card-title"><%= template.title %></h5>
+          <p class="card-text"><%= template.description %></p>
+        </div>
+        <div class="card-body d-flex align-items-end justify-content-end align-items-center">
+          <%= link_to template do |f| %>
+            <div class="btn my-btn-light m-2">
+              <i class="fa-regular fa-eye "></i>
+            </div>
+          <% end %>
+
+          <%= link_to "Create text", new_template_output_path(template), :class => "btn my-btn-light"  %>
+        </div>
+      </div></>
+    <% end %>
+  </div>
 </div>
