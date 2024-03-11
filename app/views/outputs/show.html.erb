@@ -3,7 +3,8 @@
   <div class="col-12 card bg-light p-3 rounded min-output">
     <%= @output.content %>
   </div>
-  <%= link_to "Copy", output_path, class: 'btn btn-secondary'%>
-  <%= link_to 'Edit', edit_output_path(@output), class: 'btn btn-secondary' %>
- 
+  <div class="d-flex gap-3 mt-3">
+    <%= link_to "Copy", output_path, class: 'btn btn-primary'%>
+    <%= link_to 'Edit', edit_output_path(@output), class: 'btn my-btn-light' %>
+  </div>
 </div>

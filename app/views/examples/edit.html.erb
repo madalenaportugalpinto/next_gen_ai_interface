@@ -32,9 +32,10 @@
                               input_html: { class: 'tag-selector' },
                               item_wrapper_class: 'tag-item' %>
     </div>
-        <%= f.submit class: 'btn btn-primary', value: "Save & use template" %>
-          <%= link_to 'Back', templates_path(@template), class: 'btn btn-secondary' %>
-
+    <div class="d-flex gap-3">
+      <%= f.submit class: 'btn btn-primary', value: "Save & use template" %>
+      <%= link_to 'Back', template_path(@template), class: 'btn my-btn-light' %>
+    </div>
   <% end %>
   </div>
   </div>
