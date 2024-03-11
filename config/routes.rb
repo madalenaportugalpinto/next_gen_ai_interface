@@ -2,10 +2,11 @@ Rails.application.routes.draw do
   devise_for :users
   resources :templates do
     resources :examples, only: [:new,:create]
+    resources :outputs, only: [:new, :create]
   end
 
-  resources :examples, only: [:edit, :update]
   resources :outputs, only: [:edit, :update, :show]
+  resources :examples, only: [:edit, :update]
 
   resources :input_fields, only: [:update, :edit]
 

@@ -3,11 +3,14 @@
     <h1 class="display-1">Output</h1>
     <div class="col-12 card bg-light p-3 rounded min-output relative flex mb-3">
       <div data-clipboard-target="input">
-        <%= @output.content %>
+        <h4>
+          <%= @output.content %>
+        </h4>
       </div>
     </div>
-
-    <button class="copy_button btn btn-secondary" data-clipboard-target="button" data-action="click->clipboard#copy">Copy to Clipboard</button>
-    <%= link_to 'Back', :back, class: 'btn btn-secondary mx-3' %>
-  </div>
+      <div class="d-flex gap-3 mt-3">
+        <button class="copy_button btn btn-primary" data-clipboard-target="button" data-action="click->clipboard#copy">Copy</button>
+        <%= link_to 'Edit', edit_output_path(@output), class: 'btn my-btn-light' %>
+      </div>
+    </div>
 </div>

@@ -5,6 +5,9 @@ class Example < ApplicationRecord
   has_many :example_fields
   after_create :generate_example_field
 
+  accepts_nested_attributes_for :example_fields
+
+
   def generate_example_field
     client = OpenAI::Client.new
     chaptgpt_response = client.chat(parameters: {
