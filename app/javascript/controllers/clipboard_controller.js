@@ -19,6 +19,13 @@ export default class extends Controller {
 
         this.buttonTarget.disabled = true;
         this.buttonTarget.innerText = this.feedbackTextValue;
+
+        setTimeout(() => {
+          this.buttonTarget.disabled = false;
+          this.buttonTarget.innerText = 'Copy to Clipboard';
+        }, 500);
+
+        
       } catch (err) {
         console.error('Failed to copy: ', err);
       }
