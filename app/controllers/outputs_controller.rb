@@ -4,7 +4,7 @@ class OutputsController < ApplicationController
   def new
     @output = Output.new(template: @template)
     @example = @template.example
-    @example.example_fields.each do |field|
+    @example.example_fields.active.each do |field|
       @output.input_fields << InputField.new(key: field.key)
     end
   end
