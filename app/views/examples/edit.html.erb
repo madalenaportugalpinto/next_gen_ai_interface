@@ -24,22 +24,13 @@
       <h2 class="display-2 ">Input data</h2>
 
   <%# display all example_fields as checkboxes %>
+  <div class="d-flex flex-row">
   <%= f.fields_for :example_fields do |field_subform| %>
   <%= field_subform.hidden_field :id %>
-    <%= field_subform.input :active, label: field_subform.object.key, input_html: { class: 'tag-selector' }, input_wrapper_class: 'tag-item' %>
+    <%= field_subform.input :active, label: field_subform.object.key, input_html: { class: 'tag-selector' }, wrapper_html: { class: 'tag-item' } %>
   <% end %>
-  <%# change checkbox status according to :active true false %>
-  <%# change active status of example_field in the database according to checkbox status %>
-  <%# get input fields of the example fields that are active true %>
+  </div>
 
-<%#= f.collection_check_boxes :example_fields,
-      @example.example_fields,
-      :id,
-      :key,
-      include_hidden: false,
-      as: :check_boxes,
-      input_html: { class: 'tag-selector' },
-      item_wrapper_class: 'tag-item' %>
 
 
     </div>

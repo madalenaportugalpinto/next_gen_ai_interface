@@ -7,6 +7,12 @@ class OutputsController < ApplicationController
     @example.example_fields.active.each do |field|
       @output.input_fields << InputField.new(key: field.key)
     end
+    @example.example_fields.notactive.each do |field|
+      p field.key
+      p @example.content
+
+      @example.content.gsub("<#{field.key}>", field.key)
+    end
   end
 
   def create

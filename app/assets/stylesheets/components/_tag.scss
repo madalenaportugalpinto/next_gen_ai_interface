@@ -1,13 +1,18 @@
 .tag-item {
   display: inline-block;
+  .form-check {
+    display: inline-block;
+    padding: 0;
+  }
 }
 
-.tag-item > input {
+.tag-selector {
   position: absolute;
   transform: scale(0);
+
 }
 
-.tag-item > input + label {
+.tag-selector + label {
   cursor: pointer;
   display: inline-block;
   border-radius: 8px;
@@ -19,7 +24,7 @@
   margin-bottom: 0.4rem;
 }
 
-.tag-item > input:checked + label {
+.tag-selector:checked + label {
   background-color: $primary;
   color: white;
 }
