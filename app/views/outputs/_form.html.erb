@@ -15,7 +15,7 @@
   <%= f.submit output.persisted? ? 'Update Text' : "Create Text" ,class: 'btn btn-primary' %>
 
   <% if output.persisted? %>
-    <%= link_to 'back', edit_example_path(@example), class: 'btn my-btn-light' %>
+    <%= link_to 'Back', edit_example_path(@example), class: 'btn my-btn-light' %>
   <% else %>
     <%= link_to 'Back', :back, class: 'btn my-btn-light' %>
   <% end %>
