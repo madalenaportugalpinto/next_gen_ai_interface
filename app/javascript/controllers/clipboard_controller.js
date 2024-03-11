@@ -22,7 +22,7 @@ export default class extends Controller {
 
         setTimeout(() => {
           this.buttonTarget.disabled = false;
-          this.buttonTarget.innerText = 'Copy to Clipboard';
+          this.buttonTarget.innerText = 'Copy';
         }, 500);
 
         
