@@ -25,10 +25,12 @@
     </div>
 </div>
 
+  <div class="d-flex gap-3">
     <%= link_to "Use template", new_template_output_path(@template), :class => "btn btn-primary" %>
     <%= link_to "Edit template", (edit_example_path(@template.example) if @template.example), :class => "btn my-btn-light " %>
-    <%= link_to 'Back', :back, class: 'btn btn-secondary' %>
 
+    <%= link_to 'Back', templates_path, class: 'btn my-btn-light' %>
+  </div>
 </div>
 
 </div>

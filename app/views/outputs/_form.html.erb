@@ -1,0 +1,22 @@
+<%= f.error_notification %>
+<%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+
+<%= f.fields_for :input_fields do |field_subform| %>
+  <p> <%= field_subform.object.key.capitalize %> </p>
+  <div class="row mb-3">
+    <div class="form-inputs col-8">
+      <%= field_subform.hidden_field :key %>
+      <%= field_subform.text_field :value, class: 'form-control bg-light rounded-2 custom-shaddow', placeholder: " Your #{field_subform.object.key} " %>
+    </div>
+  </div>
+<% end %>
+
+<div class="d-flex gap-3">
+  <%= f.submit output.persisted? ? 'Update Text' : "Create Text" ,class: 'btn btn-primary' %>
+
+  <% if output.persisted? %>
+    <%= link_to 'Back', edit_example_path(@example), class: 'btn my-btn-light' %>
+  <% else %>
+    <%= link_to 'Back', :back, class: 'btn my-btn-light' %>
+  <% end %>
+</div>
