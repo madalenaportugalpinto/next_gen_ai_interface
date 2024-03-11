@@ -1,0 +1,28 @@
+<div class="container mt-5">
+  <h1 class="display-1">Create Text</h1>
+  <div class="row">
+    <div class="col-6">
+      <%= simple_form_for [@template, @output] do |f| %>
+        <%= f.error_notification %>
+        <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+        <%= f.fields_for :input_fields do |field_subform| %>
+          <p> <%= field_subform.object.key.capitalize %> </p>
+          <div class="row mb-3">
+            <div class="form-inputs col-8">
+              <%= field_subform.hidden_field :key %>
+              <%= field_subform.text_field :value, class: 'form-control bg-light rounded-2 custom-shaddow', placeholder: " Your #{field_subform.object.key} " %>
+            </div>
+          </div>
+        <% end %>
+
+        <%= f.submit "Create Text" ,class: 'btn btn-secondary' %>
+        <%= link_to 'Back', :back, class: 'btn btn-secondary' %>
+
+      <% end %>
+    </div>
+
+    <div class="col-6 card bg-light p-3 rounded">
+      <p><%= @example.content %></p>
+    </div>
+  </div>
+</div>

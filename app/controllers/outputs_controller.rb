@@ -1,4 +1,25 @@
 class OutputsController < ApplicationController
+  before_action :set_template, only: [:new, :create]
+
+  def new
+    @output = Output.new(template: @template)
+    @example = @template.example
+    @example.example_fields.each do |field|
+      @output.input_fields << InputField.new(key: field.key)
+    end
+  end
+
+  def create
+    @output = Output.new(output_params)
+    @output.template = @template
+
+    if @output.save
+      @output.generate_output_content
+      redirect_to @output
+    else
+      render :new
+    end
+  end
 
   def show
     #vemos o output final
@@ -17,8 +38,19 @@ class OutputsController < ApplicationController
   def update
     #gravar as alteraçoes
     @output = Output.find(params[:id])
-    @template = @output.template
+    # @template = @output.template
+    @output.update(output_params)
     @output.generate_output_content
-    redirect_to @output
   end
+
+  private
+
+  def output_params
+    params.require(:output).permit(:content, :prompt, input_fields_attributes: [:key, :value, :id])
+  end
+
+  def set_template
+    @template = Template.find(params[:template_id])
+  end
+
 end
