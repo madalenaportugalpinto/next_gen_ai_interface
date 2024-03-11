@@ -1,9 +1,11 @@
-<div class="container mt-5">
-  <h1 class="display-1">Output</h1>
-  <div class="col-12 card bg-light p-3 rounded min-output">
-    <%= @output.content %>
-  </div>
-  <%= link_to "Copy", output_path, class: 'btn btn-secondary'%>
-  <%= link_to 'Back', :back, class: 'btn btn-secondary' %>
+<div data-controller="clipboard" data-clipboard-feedback-text-value="Copied!">
+  <div class="container mt-5">
+    <h1 class="display-1">Output</h1>
+    <div class="col-12 card bg-light p-3 rounded min-output relative flex mb-3">
+      <%= text_area_tag :content, @output.content, disabled: true, data: { clipboard_target: "input" }, class: 'h-100 border-0 flex-grow-1 bg-light' %>
+    </div>
 
+    <button class="copy_button btn btn-secondary" data-action="click->clipboard#copy">Copy to Clipboard</button>
+    <%= link_to 'Back', :back, class: 'btn btn-secondary mx-3' %>
+  </div>
 </div>
