@@ -24,7 +24,7 @@ class Output < ApplicationRecord
     client = OpenAI::Client.new
     chaptgpt_response = client.chat(parameters: {
       model: "gpt-3.5-turbo",
-      messages: [{ role: "user", content: "given #{template.example.content} #{parse_input_fields} replace the keys for the values in the first text and get a full text"}]
+      messages: [{ role: "user", content: "given #{template.example.content} #{parse_input_fields} replace the keys for the values in the first text and get a full text with any signals"}]
     })
     result = chaptgpt_response["choices"][0]["message"]["content"]
     update(content: result)

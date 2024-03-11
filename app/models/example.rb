@@ -9,23 +9,29 @@ class Example < ApplicationRecord
     client = OpenAI::Client.new
     chaptgpt_response = client.chat(parameters: {
       model: "gpt-3.5-turbo",
-      messages: [{ role: "user", content: "given #{content}, give me the key value pairs of the information keywords in it, in a json with the name example_field"}]
+      messages: [{ role: "user", content: "given #{content}, return me the key value pairs of the relevant keywords in it, in a json with the name example_field and where the keys are in lower snake case. Every key needs to be one word only."}]
     })
     json_string = chaptgpt_response["choices"][0]["message"]["content"]
+
     ruby_object = JSON.parse(json_string)
-    ruby_object["example_field"].each do |key, value|
-      ExampleField.create!(key: key, value: value, example: self)
+    key_values = ruby_object["example_field"]
+
+    key_values.each do |key, value|
+      example_fields.create!(key:, value:)
     end
-    generate_content_example(ruby_object)
+
+    # generate_content_example
   end
 
-  def generate_content_example(ruby_object)
+  def generate_content_example
     client = OpenAI::Client.new
+    puts "#{content}, in this text replace the keys of te values for each of these keys #{example_fields.pluck(:key)} like <key>"
     chaptgpt_response = client.chat(parameters: {
       model: "gpt-3.5-turbo",
-      messages: [{ role: "user", content: "#{content}, replace in this text each of #{ruby_object["example_field"].keys} in the corresponding place like this <key>"}]
+      messages: [{ role: "user", content: "#{content}, in this text replace the values for each of these keys #{example_fields.pluck(:value, :key).to_h} like <key>"}]
     })
     output_from_api = chaptgpt_response["choices"][0]["message"]["content"]
+
     update(content: output_from_api)
   end
 end
