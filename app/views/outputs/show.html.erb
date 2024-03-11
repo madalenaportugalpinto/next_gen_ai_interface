@@ -2,10 +2,12 @@
   <div class="container mt-5">
     <h1 class="display-1">Output</h1>
     <div class="col-12 card bg-light p-3 rounded min-output relative flex mb-3">
-      <%= text_area_tag :content, @output.content, disabled: true, data: { clipboard_target: "input" }, class: 'h-100 border-0 flex-grow-1 bg-light' %>
+      <div data-clipboard-target="input">
+        <%= @output.content %>
+      </div>
     </div>
 
-    <button class="copy_button btn btn-secondary" data-action="click->clipboard#copy">Copy to Clipboard</button>
+    <button class="copy_button btn btn-secondary" data-clipboard-target="button" data-action="click->clipboard#copy">Copy to Clipboard</button>
     <%= link_to 'Back', :back, class: 'btn btn-secondary mx-3' %>
   </div>
 </div>

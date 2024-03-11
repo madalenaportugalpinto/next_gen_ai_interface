@@ -1,7 +1,7 @@
 import { Controller } from "@hotwired/stimulus";
 
 export default class extends Controller {
-  static targets = ["input"];
+  static targets = ["input", "button"];
   static values = {
     feedbackText: String
   }
@@ -10,9 +10,23 @@ export default class extends Controller {
   }
 
   copy(event) {
-    this.inputTarget.select();
-    document.execCommand('copy');
-    event.currentTarget.disabled = true;
-    event.currentTarget.innerText = this.feedbackTextValue;
+    let text = this.inputTarget.innerHTML;
+
+    const copyContent = async () => {
+      try {
+        await navigator.clipboard.writeText(text);
+        console.log('Content copied to clipboard');
+
+        this.buttonTarget.disabled = true;
+        this.buttonTarget.innerText = this.feedbackTextValue;
+      } catch (err) {
+        console.error('Failed to copy: ', err);
+      }
+    }
+
+    copyContent();
   }
 }
+
+
+
