@@ -20,6 +20,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_03_12_095429) do
     t.bigint "example_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "active", default: true
     t.index ["example_id"], name: "index_example_fields_on_example_id"
   end
 

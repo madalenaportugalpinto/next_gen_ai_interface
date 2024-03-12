@@ -20,14 +20,13 @@ class ExamplesController < ApplicationController
 
   def update
     @example = Example.find(params[:id])
-    @template = @example.template
-    redirect_to new_template_output_path(@template)
-
+    @example.update(example_params)
+    redirect_to new_template_output_path(@example.template)
   end
 
   private
 
   def example_params
-    params.require(:example).permit(:content, :template_id)
+    params.require(:example).permit(:content, :template_id, example_fields_attributes: [:active, :id])
   end
 end

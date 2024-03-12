@@ -4,8 +4,14 @@ class OutputsController < ApplicationController
   def new
     @output = Output.new(template: @template)
     @example = @template.example
-    @example.example_fields.each do |field|
-      @output.input_fields << InputField.new(key: field.key)
+    @example.example_fields.notactive.each do |field|
+      p field.key
+      p @example.content
+      @example.content = @example.content.gsub("<#{field.key}>", field.key)
+    end
+    @example.example_fields.active.each do |field|
+      @example.content = @example.content.gsub(field.key, field.value)
+      @output.input_fields << InputField.new(key: field.value)
     end
   end
 
