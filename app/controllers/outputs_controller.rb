@@ -5,10 +5,7 @@ class OutputsController < ApplicationController
     @output = Output.new(template: @template)
     @example = @template.example
 
-    @example.example_fields.active.each do |field|
-      @example.content = @example.content.gsub(field.key, field.value)
-      @output.input_fields << InputField.new(key: field.value)
-    end
+    init_input_fields
   end
 
   def create
@@ -53,8 +50,15 @@ class OutputsController < ApplicationController
 
   private
 
+  def init_input_fields
+    @example.example_fields.active.each do |field|
+      # @example.content = @example.content.gsub(field.key, field.value)
+      @output.input_fields << InputField.new(key: field.value, example_field: field)
+    end
+  end
+
   def output_params
-    params.require(:output).permit(:content, :prompt, input_fields_attributes: [:key, :value, :id])
+    params.require(:output).permit(:content, :prompt, input_fields_attributes: [:key, :value, :id, :example_field_id])
   end
 
   def set_template
