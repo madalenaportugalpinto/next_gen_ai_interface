@@ -20,8 +20,8 @@
       <%= f.error_notification %>
       <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
       <div class="card col-12 bg-light p-3 rounded my-3">
-        <h5>
-        <%= content_with_fields @example %>
+        <h5 data-checkbox-edit-target="content" class="opacity-0">
+          <%= content_with_fields @example %>
         </h5>
       </div>
     </div>
@@ -32,7 +32,7 @@
       <div class="d-flex flex-row">
         <%= f.fields_for :example_fields do |field_subform| %>
         <%= field_subform.hidden_field :id %>
-          <%= field_subform.input :active, label: field_subform.object.key, input_html: { class: 'tag-selector', data: { action: "click->checkbox-edit#toggleField", field_id: field_subform.object.id } }, wrapper_html: { class: 'tag-item' } %>
+          <%= field_subform.input :active, label: field_subform.object.key, input_html: { class: 'tag-selector', data: { action: "click->checkbox-edit#toggleField", checkbox_edit_target: "check", field_id: field_subform.object.id } }, wrapper_html: { class: 'tag-item' } %>
         <% end %>
       </div>
     </div>
