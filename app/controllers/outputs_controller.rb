@@ -4,11 +4,7 @@ class OutputsController < ApplicationController
   def new
     @output = Output.new(template: @template)
     @example = @template.example
-    @example.example_fields.notactive.each do |field|
-      p field.key
-      p @example.content
-      @example.content = @example.content.gsub("<#{field.key}>", field.key)
-    end
+
     @example.example_fields.active.each do |field|
       @example.content = @example.content.gsub(field.key, field.value)
       @output.input_fields << InputField.new(key: field.value)
@@ -18,6 +14,7 @@ class OutputsController < ApplicationController
   def create
     @output = Output.new(output_params)
     @output.template = @template
+    @example = @template.example
 
     if @output.save
       @output.generate_output_content
@@ -43,10 +40,15 @@ class OutputsController < ApplicationController
   def update
     #gravar as alteraçoes
     @output = Output.find(params[:id])
-    # @template = @output.template
-    @output.update(output_params)
-    @output.generate_output_content
-    redirect_to @output
+    @template = @output.template
+    @example = @template.example
+
+    if @output.update(output_params)
+      @output.generate_output_content
+      redirect_to @output
+    else
+      render :edit
+    end
   end
 
   private
