@@ -8,7 +8,6 @@ class TemplatesController < ApplicationController
     @template = Template.find(params[:id])
     @example = @template.example if @template.example
     @example_fields = @template.example_fields
-    p @example_fields
   end
 
   def new
