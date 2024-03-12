@@ -15,8 +15,6 @@ Output.destroy_all
 Example.destroy_all
 Template.destroy_all
 
-
-
 puts "Creating template 1 and example 1"
 template_1 = Template.create(title: "My Emails", description: "These are my grades emails", user_id: User.last.id)
 Example.create(content:"Dear Madalena, I would like to congratulate you for your A Grade in the batch 1556 of Le Wagon. Kind regards, Dennis", template: template_1 )
@@ -30,11 +28,6 @@ puts "Creating template 3 and example 3"
 
 template_3 = Template.create(title: "My weekly report", description: "This is my weekly support that i need in all of my week", user_id: User.last.id )
 Example.create(content:"Project managers and CEOs aren’t the only ones that work with monthly reports. Teams often need to have some kind of reporting workflow to keep leaders and other teams aware of what they’ve been working on. A manager will often take care of this report; though sometimes it might only be shared with a department head or a vice president. Here’s what this kind of report might look like.", template: template_3 )
-
-
-
-
-
 
 puts "Created #{Template.count} templates"
 
