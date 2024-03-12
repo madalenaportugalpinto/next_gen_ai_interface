@@ -1,0 +1,14 @@
+.field-tag {
+  font-weight: 700;
+  background-color: #C2CDFF;
+  border-radius: 4px;
+  color: $primary;
+
+  &::before {
+    content: "<";
+  }
+
+  &::after {
+    content: ">";
+  }
+}
