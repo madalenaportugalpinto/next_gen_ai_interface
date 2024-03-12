@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_03_07_151226) do
+ActiveRecord::Schema[7.1].define(version: 2024_03_12_095429) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -28,6 +28,10 @@ ActiveRecord::Schema[7.1].define(version: 2024_03_07_151226) do
     t.bigint "template_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.text "initial_content"
+    t.text "chatgpt_keys"
+    t.text "initial_prompt"
+    t.text "intermediate_prompt"
     t.index ["template_id"], name: "index_examples_on_template_id"
   end
 

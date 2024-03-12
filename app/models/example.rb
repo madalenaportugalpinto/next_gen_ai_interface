@@ -3,15 +3,26 @@ require "json"
 class Example < ApplicationRecord
   belongs_to :template
   has_many :example_fields
+
   after_create :generate_example_field
 
   def generate_example_field
     client = OpenAI::Client.new
+
+    example_fields.destroy_all # just in case
+
+    self.initial_content = content
+    self.initial_prompt = "given #{initial_content}, return me the key value pairs of the dynamic keywords in it, in a
+    json with the name example_field"
+    save
+
     chaptgpt_response = client.chat(parameters: {
-      model: "gpt-3.5-turbo",
-      messages: [{ role: "user", content: "given #{content}, return me the key value pairs of the relevant keywords in it, in a json with the name example_field and where the keys are in lower snake case. Every key needs to be one word only."}]
+      model: "gpt-4",
+      messages: [{ role: "user", content: initial_prompt }]
     })
     json_string = chaptgpt_response["choices"][0]["message"]["content"]
+
+    update(chatgpt_keys: json_string)
 
     ruby_object = JSON.parse(json_string)
     key_values = ruby_object["example_field"]
@@ -20,15 +31,17 @@ class Example < ApplicationRecord
       example_fields.create!(key:, value:)
     end
 
-    # generate_content_example
+    generate_content_example
   end
 
   def generate_content_example
     client = OpenAI::Client.new
-    puts "#{content}, in this text replace the keys of te values for each of these keys #{example_fields.pluck(:key)} like <key>"
+    self.intermediate_prompt = "#{content}, in this text replace each of the matching keys for each of corresponding values from this hash: #{example_fields.pluck(:key, :value).to_h.to_json} like <key>"
+    save
+
     chaptgpt_response = client.chat(parameters: {
-      model: "gpt-3.5-turbo",
-      messages: [{ role: "user", content: "#{content}, in this text replace the values for each of these keys #{example_fields.pluck(:value, :key).to_h} like <key>"}]
+      model: "gpt-4",
+      messages: [{ role: "user", content: intermediate_prompt}]
     })
     output_from_api = chaptgpt_response["choices"][0]["message"]["content"]
 
