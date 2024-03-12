@@ -3,6 +3,7 @@ class Output < ApplicationRecord
   has_many :input_fields, dependent: :destroy
 
   accepts_nested_attributes_for :input_fields
+  validates_associated :input_fields
 
   def parse_input_fields
     hash_input_fields = {}
