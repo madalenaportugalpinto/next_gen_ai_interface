@@ -2,12 +2,10 @@
   <div class="container">
     <h1 class="display-1"><strong>Next_Gen_<strong class="text-danger">AI</strong>_Interface</strong></h1>
     <h2 class= "mb-5">Change your life and your daily routines to create a smoother experience with less mundane work, and more.</h2>
-    <a class="my-btn-home" <% if user_signed_in? %>
-        <%= link_to "Start now", templates_path %>
-      <% else %>
+
        <%= link_to "Start now", new_user_registration_path %>
-    <% end %>
-    </a>
+
+
   </div>
 </div>
 
