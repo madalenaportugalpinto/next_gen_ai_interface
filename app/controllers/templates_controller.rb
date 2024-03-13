@@ -11,7 +11,7 @@ class TemplatesController < ApplicationController
   end
 
   def new
-    @template = Template.new
+    @template = Template.new(example: Example.new)
   end
 
   def edit
@@ -21,14 +21,21 @@ class TemplatesController < ApplicationController
   def create
     @template = Template.new(template_params)
     @template.user_id = current_user.id
-    @template.save
-    redirect_to new_template_example_path(@template)
+
+    if @template.save
+      @template.example.generate_example_field
+      redirect_to edit_example_path(@template.example)
+    else
+      render :new, status: :unprocessable_entity
+    end
   end
 
   def update
     @template = Template.find(params[:id])
+
     if @template.update(template_params)
-      redirect_to edit_example_path(@template), notice: 'Template was successfully updated.'
+      @template.example.generate_example_field if @template.example.initial_content_previously_changed?
+      redirect_to edit_example_path(@template.example), notice: 'Template was successfully updated.'
     else
       render :edit
     end
@@ -37,6 +44,6 @@ class TemplatesController < ApplicationController
   private
 
   def template_params
-    params.require(:template).permit(:title, :description)
+    params.require(:template).permit(:title, :description, example_attributes: [:id, :content, :initial_content])
   end
 end
