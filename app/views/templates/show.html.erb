@@ -2,15 +2,15 @@
   <h1 class="display-1"><%= @template.title  %></h1>
   <h2 class="display-2"><%= @template.description %></h2>
 </div>
-
+<% if @template.outputs != 0 %>
 <div class="container my-5 ">
   <h2 class="display-2 my-3">History</h2>
 
   <div class="d-flex flex-row flex-wrap">
     <% @template.outputs.each_with_index do |output, index| %>
       <div class="w-25 px-2 ">
-        <%= link_to output, class: "w-100 mb-4 btn btn-light text-dark" do %>
-          <h5 class="text-dark">
+        <%= link_to output, class: "col-4 mb-4 btn btn-primary" do %>
+          <h5 >
             <i class="fa-regular fa-file p-1"></i>
             Version_<%= index + 1 %>
           </h5>
@@ -27,7 +27,7 @@
     <% end %>
   </div>
 </div>
-
+<% end %>
 <div class="container my-5">
   <h2 class="display-2">Template preview</h2>
   <div class="my-2">
