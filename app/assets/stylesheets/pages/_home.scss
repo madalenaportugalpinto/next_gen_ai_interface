@@ -2,3 +2,36 @@
   min-height: 50vh;
 
 }
+html, body {
+    background: #333;
+}
+section {
+
+    font-family: 'Exo', sans-serif;
+    font-weight: 100;
+    color: #fff;
+    position: absolute;
+    z-index: 1000;
+    top: 50vh;
+    transform: translateY(-50%);
+    text-align: center;
+    display: inline-block;
+    margin: auto;
+    left: 0;
+    right: 0;
+    padding: 5px;
+    .top {
+      display: block;
+      margin-bottom: 10px;
+      font-size: 16px;
+    }
+    .bal {
+      font-size: 50px;
+      color: #09E828;
+    }
+    .eth {
+      font-size: 20px;
+      color: #fff;
+      margin-left: 10px;
+    }
+}
