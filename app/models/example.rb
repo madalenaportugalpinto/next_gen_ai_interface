@@ -15,8 +15,11 @@ class Example < ApplicationRecord
     example_fields.destroy_all # just in case
 
     self.initial_content = content
-    self.initial_prompt = "given #{initial_content}, return me the key value pairs of the dynamic keywords in it, in a
-    json with the name example_field"
+    self.initial_prompt = "Given #{initial_content}, create a JSON object with one level only named 'example_field'
+    that follows a standardized format. The output should consist of key-value pairs,
+    with each key representing an information keyword extracted from the text,
+    and the corresponding value providing relevant information associated with that keyword.
+    Ensure the JSON object adheres to a consistent and well-defined structure."
     save
 
     chaptgpt_response = client.chat(parameters: {
@@ -39,7 +42,10 @@ class Example < ApplicationRecord
 
   def generate_content_example
     client = OpenAI::Client.new
-    self.intermediate_prompt = "#{content}, in this text replace each of the matching keys for each of corresponding values from this hash: #{example_fields.pluck(:key, :value).to_h.to_json} like <key>"
+    self.intermediate_prompt = "given #{content}, in this text replace each value
+    for the corresponding key like <key>considering this json obejct:
+    #{example_fields.pluck(:key, :value).to_h.to_json} like <key>, return me a text"
+
     save
 
     chaptgpt_response = client.chat(parameters: {
