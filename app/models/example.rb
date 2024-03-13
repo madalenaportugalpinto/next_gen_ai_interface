@@ -4,9 +4,9 @@ class Example < ApplicationRecord
   belongs_to :template
   has_many :example_fields
 
-  after_create :generate_example_field
-
   accepts_nested_attributes_for :example_fields
+
+  validates :content, presence: true
 
   def content_with_active_fields_only
     sanitized_content = content
