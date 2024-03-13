@@ -5,7 +5,8 @@
   <div class="row mb-3">
     <div class="form-inputs col-8">
       <%= field.hidden_field :key %>
-      <%= field.input :value, input_html: { class: 'form-control bg-light rounded-2 custom-shaddow' }, placeholder: "Your #{field.object.key}", label: field.object.key.capitalize %>
+      <%= field.hidden_field :example_field_id %>
+      <%= field.input :value, input_html: { class: 'form-control bg-light rounded-2 custom-shaddow', data: { action: "input->realtime-fields#changeText", id: field.object.example_field_id, realtime_fields_target: "input" } }, placeholder: "Add #{field.object.key}", label: field.object.key.capitalize %>
     </div>
   </div>
 <% end %>

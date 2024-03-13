@@ -21,7 +21,7 @@
       <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
       <div class="card col-12 bg-light p-3 rounded my-3">
         <h5 data-checkbox-edit-target="content" class="opacity-0">
-          <%= content_with_fields @example %>
+          <%= content_with_fields example: @example, controller: 'checkbox-edit' %>
         </h5>
       </div>
     </div>

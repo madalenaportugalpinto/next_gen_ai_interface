@@ -8,6 +8,17 @@ class Example < ApplicationRecord
 
   accepts_nested_attributes_for :example_fields
 
+  def content_with_active_fields_only
+    sanitized_content = content
+
+    # For each inactive example field we need to replace <key> with the value
+    example_fields.notactive.each do |field|
+      sanitized_content.gsub!(/<#{field.key}>/, field.value)
+    end
+
+    sanitized_content
+  end
+
 
   def generate_example_field
     client = OpenAI::Client.new

@@ -1,14 +1,14 @@
 <div class="container mt-5">
   <h1 class="display-1">New text</h1>
-  <div class="row">
+  <div class="row" data-controller="realtime-fields">
     <div class="col-6">
     <%= simple_form_for [@template, @output], data: { turbo: false } do |f| %>
       <%= render "form", f: f, output: @output %>
     <% end %>
     </div>
 
-      <div class="col-6 card bg-light p-3 rounded">
-        <p><%= @example.content %></p>
+      <div class="col-6 card bg-light p-3 rounded fs-5">
+        <%= content_with_fields example: @example, controller: 'realtime-fields', only_active: true  %>
       </div>
   </div>
 </div>

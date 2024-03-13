@@ -1,12 +1,10 @@
 <div data-controller="clipboard" data-clipboard-feedback-text-value="Copied!">
   <div class="container mt-5">
     <h1 class="display-1">Output</h1>
-    <div class="col-12 card bg-light p-3 rounded min-output relative flex mb-3">
-       <h4>
+    <div class="col-12 card bg-light p-3 rounded min-output relative flex mb-3 fs-4">
         <div data-clipboard-target="input">
           <%= @output.content %>
         </div>
-      </h4>
     </div>
       <div class="d-flex gap-3 mt-3">
         <button class="copy_button btn btn-primary" data-clipboard-target="button" data-action="click->clipboard#copy">Copy</button>
@@ -14,6 +12,3 @@
       </div>
     </div>
 </div>
-
-
-
