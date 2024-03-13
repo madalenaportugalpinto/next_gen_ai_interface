@@ -1,6 +1,6 @@
 <div class="navbar navbar-expand-sm navbar-light navbar-lewagon sticky-top">
   <div class="container-fluid">
-    <%= link_to "/", class: "navbar-brand" do %>
+    <%= link_to templates_path, class: "navbar-brand" do %>
       <%= image_tag "logo.svg" %>
     <% end %>
 
@@ -11,9 +11,6 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto piped">
         <% if user_signed_in? %>
-          <li class="nav-item">
-            <%= link_to "My Templates", templates_path, class: "nav-link nav-bar-elem" %>
-          </li>
           <li class="nav-item active">
             <%= link_to "New template", "/templates/new", class: "nav-link my-btn" %>
           </li>
