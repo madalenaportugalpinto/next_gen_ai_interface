@@ -23,7 +23,6 @@ class Output < ApplicationRecord
         messages: [{ role: "user", content: prompt }]
       }
     )
-
     result = chaptgpt_response["choices"][0]["message"]["content"]
     update(content: result)
   end

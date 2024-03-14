@@ -8,16 +8,48 @@ Template.destroy_all
 
 puts "Creating template 1 and example 1"
 
-Template.create!(
-  title: "My Emails",
-  description: "These are my grades emails",
+# Template.create!(
+#   title: "My Emails",
+#   description: "These are my grades emails",
+#   user_id: User.last.id,
+#   example_attributes: {
+#     content: "Dear Madalena, I would like to congratulate you for your A Grade in the batch 1556 of Le Wagon. Kind regards, Dennis"
+#   }
+# )
+
+# Example.last.generate_example_field
+
+template = Template.create!(
+  title: "My Applications",
+  description: "These are my applications emails",
   user_id: User.last.id,
   example_attributes: {
-    content: "Dear Madalena, I would like to congratulate you for your A Grade in the batch 1556 of Le Wagon. Kind regards, Dennis"
+    content: "Dear <recipient>, I am writing to express my interest in the <job_position>
+     position at <company>, as advertised on <job_platform>.
+     With <years_experience> years of experience in <area>, I am confident in my ability
+     to contribute effectively to your team. Throughout my career, I have honed my skills
+     in <language>. For example, in my previous role at <previous_company>,
+     I <accomplishments>. Enclosed is my resume,
+     which provides further details about my qualifications and experiences.
+     I would welcome the opportunity to discuss how my background, skills, and
+     passion align with the needs of your company. Thank you for considering my
+     application. I look forward to the possibility of contributing to your team.
+     Warm regards, <sender>"
   }
 )
 
-Example.last.generate_example_field
+template.example.example_fields.create!(key: "recipient", value: "Mr. Smith")
+template.example.example_fields.create!(key: "job_position", value: "Web Developer")
+template.example.example_fields.create!(key: "company", value: "Microsoft")
+template.example.example_fields.create!(key: "job_platform", value: "LinkedIn")
+template.example.example_fields.create!(key: "years_experience", value: "3")
+template.example.example_fields.create!(key: "area", value: "Web Development")
+template.example.example_fields.create!(key: "language", value: "Ruby on Rails")
+template.example.example_fields.create!(key: "previous_company", value: "Apple")
+template.example.example_fields.create!(key: "accomplishments", value: "made an interface for AI")
+template.example.example_fields.create!(key: "sender", value: "Renato")
+
+
 
 puts "Created #{Template.count} templates"
 
