@@ -12,31 +12,33 @@
   <% end %>
   </h2>
 </div>
+
+<% if @template.outputs.length != 0 %>
 <div class="container my-5 ">
   <h2 class="display-2 my-3">History</h2>
 
-  <div class="d-flex flex-row flex-wrap">
+  <div class="d-flex flex-row flex-wrap ">
     <% @template.outputs.each_with_index do |output, index| %>
       <div class="w-25 px-2 ">
-        <%= link_to output, class: "w-100 mb-4 btn btn-light text-dark" do %>
-          <h5 class="text-dark">
+        <%= link_to output, class: " mb-4 btn btn-primary" do %>
+          <h5 >
             <i class="fa-regular fa-file p-1"></i>
-            Version_<%= index + 1 %>
+            Version <%= index + 1 %>
           </h5>
 
-          <div class="fw-normal my-2">
-            <%= truncate(output.content, length: 30) %>
+          <div class="fw-normal my-2 text-truncate">
+            <%= truncate(output.content, length: 40) %>
           </div>
 
-          <div class="fw-light text-black-50 w-100 text-truncate fs-6">
-            <small><%= output.input_fields.map(&:key).to_sentence(last_word_connector: ', ') %></small>
+          <div class="fw-light text-light-50 w-100 text-truncate fs-6">
+            <small><%= truncate(output.input_fields.map(&:key).to_sentence(last_word_connector: ', '), length: 30) %></small>
           </div>
         <% end %>
       </div>
     <% end %>
   </div>
 </div>
-
+<% end %>
 <div class="container my-5" data-controller="checkbox-edit">
   <h2 class="display-2">Template preview</h2>
   <%= simple_form_for @example do |f| %>
@@ -62,7 +64,7 @@
     </div>
 
     <div class="d-flex gap-3">
-      <%= f.submit class: 'btn btn-primary', value: "Save & use template" %>
+      <%= f.submit class: 'btn btn-primary', value: "Save & continue" %>
       <%= link_to 'Back', templates_path, class: 'btn my-btn-light' %>
     </div>
   <% end %>
