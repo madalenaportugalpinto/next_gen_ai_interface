@@ -9,7 +9,7 @@ class OutputsController < ApplicationController
   end
 
   def create
-    @output = Output.new(output_params)
+    @output = params[:output].blank? ? Output.new : Output.new(output_params)
     @output.template = @template
     @example = @template.example
 
