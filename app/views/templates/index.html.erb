@@ -1,10 +1,10 @@
 <div class="container mt-5">
-  <h1 class="display-1">Templates</h1>
+  <h1 class="display-1 title">Templates</h1>
 
   <div id="template">
     <% @templates.each do |template| %>
 
-      <div class="card flex-md-row mb-3 h-md-250 text-white bg-primary col-12 d-flex justify-content-between p-2 custom-shadow ">
+      <div class="card flex-md-row mb-3 h-md-250 text-white bg-primary col-12 d-flex justify-content-between p-2 custom-shadow card-presentation ">
         <div class="card-body d-flex flex-column align-items-start">
           <h5 class="card-title"><%= template.title %></h5>
           <p class="card-text"><%= template.description %></p>
