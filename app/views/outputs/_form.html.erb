@@ -1,6 +1,3 @@
-<%#= f.error_notification %>
-<%#= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
-
 <%= f.simple_fields_for :input_fields, @output.input_fields do |field| %>
   <div class="row mb-3">
     <div class="form-inputs col-8">

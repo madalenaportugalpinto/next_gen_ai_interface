@@ -2,7 +2,7 @@ require "json"
 
 class Example < ApplicationRecord
   belongs_to :template
-  has_many :example_fields
+  has_many :example_fields, dependent: :destroy
 
   accepts_nested_attributes_for :example_fields
 
