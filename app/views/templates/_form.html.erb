@@ -1,6 +1,6 @@
 <%= simple_form_for @template, data: { controller: 'submit-loader', action: 'submit->submit-loader#submit' } do |f| %>
-    <div class="form-inputs mt-3">
-      <%= f.input :title, input_html: { class: 'form-control fs-1  bg-light rounded-3' }, placeholder: "Add Template Title", label: false %>
+    <div class="form-inputs mt-3 title">
+      <%= f.input :title, input_html: { class: 'form-control presentation-form-control fs-1  bg-light rounded-3' }, placeholder: "Add Template Title", label: false %>
 
       <%= f.input :description, input_html: { class: 'form-control bg-light rounded-3' }, placeholder: "Add Description", label: false %>
 
