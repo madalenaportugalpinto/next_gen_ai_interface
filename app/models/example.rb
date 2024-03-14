@@ -54,7 +54,7 @@ class Example < ApplicationRecord
   def generate_content_example
     client = OpenAI::Client.new
     self.intermediate_prompt = "given #{content}, in this text replace each value
-    for the corresponding key like <key>considering this json obejct:
+    for the corresponding key like <key>considering this json object:
     #{example_fields.pluck(:key, :value).to_h.to_json} like <key>, return me a text"
 
     save

@@ -7,16 +7,22 @@ class Output < ApplicationRecord
 
   def generate_output_content
     client = OpenAI::Client.new
-    input_fields_hash = input_fields.pluck(:key, :value).to_h
+    input_fields_hash = template.example_fields.pluck(:key, :value).to_h
+                                .merge(input_fields.pluck(:key, :value).to_h)
+                                .to_json
 
-    puts input_fields_hash
+    prompt = "given #{template.example.content}, and the following JSON object:
+    #{input_fields_hash} replace the keys for the values in the provided text and
+    get a full text without any signals"
 
-    chaptgpt_response = client.chat(parameters: {
-      model: "gpt-4",
-      messages: [{ role: "user", content: "given #{template.example.content}
-        #{input_fields_hash} replace the keys for the values in the first text
-        and get a full text without any signals"}]
-    })
+    update(prompt:)
+
+    chaptgpt_response = client.chat(
+      parameters: {
+        model: 'gpt-4',
+        messages: [{ role: "user", content: prompt }]
+      }
+    )
     result = chaptgpt_response["choices"][0]["message"]["content"]
     update(content: result)
   end
