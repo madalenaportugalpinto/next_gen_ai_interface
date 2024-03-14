@@ -6,7 +6,7 @@ class Example < ApplicationRecord
 
   accepts_nested_attributes_for :example_fields
 
-  validates :content, presence: true
+  validates :content, presence: true, length: { minimum: 80 }
 
   def content_with_active_fields_only
     sanitized_content = content
