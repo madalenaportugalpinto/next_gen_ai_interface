@@ -52,8 +52,7 @@ class OutputsController < ApplicationController
 
   def init_input_fields
     @example.example_fields.active.each do |field|
-      # @example.content = @example.content.gsub(field.key, field.value)
-      @output.input_fields << InputField.new(key: field.value, example_field: field)
+      @output.input_fields << InputField.new(key: field.key, example_field: field)
     end
   end
 
