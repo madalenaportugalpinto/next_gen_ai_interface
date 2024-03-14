@@ -52,13 +52,22 @@
       </div>
     </div>
     <div class="my-5">
-      <h2 class="display-2 ">Input data</h2>
+      <h2 class="display-2 mb-3 ">Input data</h2>
 
       <%# display all example_fields as checkboxes %>
-      <div class="d-flex flex-row">
+      <div class="d-flex flex-row gap-2 flex-wrap">
         <%= f.fields_for :example_fields do |field_subform| %>
         <%= field_subform.hidden_field :id %>
-          <%= field_subform.input :active, label: field_subform.object.key, input_html: { class: 'tag-selector', data: { action: "click->checkbox-edit#toggleField", checkbox_edit_target: "check", field_id: field_subform.object.id } }, wrapper_html: { class: 'tag-item' } %>
+          <%= field_subform.input :active, label: field_subform.object.key,
+          input_html: {
+            class: 'tag-selector',
+            data: {
+              action: "click->checkbox-edit#toggleField",
+              checkbox_edit_target: "check",
+              field_id: field_subform.object.id
+            }
+          },
+          wrapper_html: { class: 'tag-item' } %>
         <% end %>
       </div>
     </div>
