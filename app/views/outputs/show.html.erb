@@ -10,6 +10,8 @@
         <button class="copy_button btn btn-primary" data-clipboard-target="button" data-action="click->clipboard#copy">Copy</button>
 
         <%= link_to 'Back', edit_output_path(@output), class: 'btn my-btn-light' %>
+
+        <%= link_to 'Edit template', edit_example_path(@output.template.example), class: "text-light mt-2 text-decoration-none" %>
       </div>
     </div>
 </div>
