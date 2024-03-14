@@ -1,6 +1,4 @@
-
-<%= simple_form_for(@template) do |f| %>
-
+<%= simple_form_for @template, data: { controller: 'submit-loader', action: 'submit->submit-loader#submit' } do |f| %>
     <div class="form-inputs mt-3">
       <%= f.input :title, input_html: { class: 'form-control fs-1  bg-light rounded-3' }, placeholder: "Add Template Title", label: false %>
 
@@ -15,5 +13,7 @@
     <% end %>
     </div>
 
- <%= f.submit class: 'btn btn-primary mt-5' %>
+  <%= f.submit class: 'btn btn-primary mt-5' %>
+
+  <%= render "shared/loading_hexes" %>
 <% end %>
