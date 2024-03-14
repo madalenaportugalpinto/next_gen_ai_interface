@@ -13,7 +13,9 @@ class Output < ApplicationRecord
 
     chaptgpt_response = client.chat(parameters: {
       model: "gpt-4",
-      messages: [{ role: "user", content: "given #{template.example.content} #{input_fields_hash} replace the keys for the values in the first text and get a full text without any signals"}]
+      messages: [{ role: "user", content: "given #{template.example.content}
+        #{input_fields_hash} replace the keys for the values in the first text
+        and get a full text without any signals"}]
     })
     result = chaptgpt_response["choices"][0]["message"]["content"]
     update(content: result)
