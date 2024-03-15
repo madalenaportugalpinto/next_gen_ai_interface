@@ -1,6 +1,6 @@
 <%= f.simple_fields_for :input_fields, @output.input_fields do |field| %>
-  <div class="row mb-3">
-    <div class="form-inputs col-8">
+  <div class="row">
+    <div class="form-inputs col-10">
       <%= field.input :key, as: :hidden %>
       <%= field.input :example_field_id, as: :hidden %>
       <%= field.input :value, input_html: {

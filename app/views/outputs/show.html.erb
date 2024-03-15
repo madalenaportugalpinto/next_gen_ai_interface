@@ -1,17 +1,27 @@
 <div data-controller="clipboard" data-clipboard-feedback-text-value="Copied!">
   <div class="container mt-5">
-    <h1 class="display-1">Output</h1>
+    <div class="d-flex flex-row mb-3 justify-content-between align-items-center">
+      <h1 class="display-1">Output</h1>
+      <div class="d-flex flex-row gap-3">
+        <button class="btn btn-primary" data-clipboard-target="button"
+          data-action="click->clipboard#copy">Copy</button>
+          <%= mail_to "recipient@email.com", "Email",
+            subject: "#{@output.template.title}",
+            body: "#{@output.content}",
+            class: "btn btn-primary" %>
+        </div>
+    </div>
+
     <div class="col-12 card bg-light p-3 rounded min-output relative flex mb-3 fs-4">
         <div data-clipboard-target="input">
           <%= @output.content %>
         </div>
     </div>
       <div class="d-flex gap-3 mt-3">
-        <button class="copy_button btn btn-primary" data-clipboard-target="button" data-action="click->clipboard#copy">Copy</button>
-
+        <%= link_to 'Edit template', edit_example_path(@output.template.example),
+          class: "btn btn-primary" %>
         <%= link_to 'Back', edit_output_path(@output), class: 'btn my-btn-light' %>
 
-        <%= link_to 'Edit template', edit_example_path(@output.template.example), class: "text-light mt-2 text-decoration-none" %>
       </div>
     </div>
 </div>
