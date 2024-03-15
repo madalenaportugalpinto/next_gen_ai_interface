@@ -13,7 +13,9 @@
     <% end %>
     </div>
 
-  <%= f.submit class: 'btn btn-primary mt-5' %>
-
+    <div class="d-flex gap-3 align-items-center mt-5">
+      <%= f.submit class: 'btn btn-primary' %>
+      <%= link_to 'Back', templates_path, class: 'btn my-btn-light' %>
+    </div>
   <%= render "shared/loading_hexes" %>
 <% end %>
