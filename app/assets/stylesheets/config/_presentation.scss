@@ -1,22 +1,27 @@
+.presentation {
+  font-size: calc(1rem + 2vw);
+}
+
 
 $font-size-base: 2rem;
+
 .my-btn-light {
-  font-size: 25px !important;
+  font-size: 22px !important;
 }
 
-.btn {
-  font-size: 25px !important;
-}
 .title {
-  font-size: calc(3rem + 3.3vw) !important;
+  font-size: calc(2.5rem + 3.3vw) !important;
   margin-bottom: 30px;
 }
+
 .card-presentation {
   margin-top: 3rem !important;
 }
-.create-text{
+
+.create-text {
   margin-top: rem !important;
 }
+
 .presentation-form-control.fs-1 {
   font-size: calc(1rem + 2.5vw) !important;
 }
