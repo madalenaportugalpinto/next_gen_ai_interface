@@ -1,0 +1,26 @@
+.home-button {
+  color: #fff;
+  text-align: center;
+  border: none;
+  background-size: 300% 100%;
+
+  background-image: linear-gradient(to right, #3458FF, #4481eb, #04fec8, #3f86ed);
+  box-shadow: 0 4px 15px 0 rgba(65, 132, 234, 0.3);
+
+  moz-transition: all .4s ease-in-out;
+  -o-transition: all .4s ease-in-out;
+  -webkit-transition: all .4s ease-in-out;
+  transition: all .4s ease-in-out;
+}
+
+.home-button:hover {
+  background-position: 100% 0;
+  moz-transition: all .4s ease-in-out;
+  -o-transition: all .4s ease-in-out;
+  -webkit-transition: all .4s ease-in-out;
+  transition: all .4s ease-in-out;
+}
+
+.home-button:focus {
+  outline: none;
+}
