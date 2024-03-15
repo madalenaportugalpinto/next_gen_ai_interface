@@ -26,9 +26,8 @@ template = Template.create!(
   example_attributes: {
     content: "Dear <recipient>, I am writing to express my interest in the <job_position>
      position at <company>, as advertised on <job_platform>.
-     With <years_experience> years of experience in <area>.
-     For example, in my previous role,
-     I <accomplishments>. I look forward to the possibility of contributing to your team.
+     With <years_experience> years of experience I look forward to the possibility
+     of contributing to your team.
      Warm regards, <sender>"
   }
 )
@@ -38,8 +37,6 @@ template.example.example_fields.create!(key: "job_position", value: "Web Develop
 template.example.example_fields.create!(key: "company", value: "Microsoft")
 template.example.example_fields.create!(key: "job_platform", value: "LinkedIn")
 template.example.example_fields.create!(key: "years_experience", value: "3")
-template.example.example_fields.create!(key: "area", value: "Web Development")
-template.example.example_fields.create!(key: "accomplishments", value: "made an interface for AI")
 template.example.example_fields.create!(key: "sender", value: "Renato")
 
 
