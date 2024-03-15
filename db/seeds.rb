@@ -26,14 +26,8 @@ template = Template.create!(
   example_attributes: {
     content: "Dear <recipient>, I am writing to express my interest in the <job_position>
      position at <company>, as advertised on <job_platform>.
-     With <years_experience> years of experience in <area>, I am confident in my ability
-     to contribute effectively to your team. Throughout my career, I have honed my skills
-     in <language>. For example, in my previous role at <previous_company>,
-     I <accomplishments>. Enclosed is my resume,
-     which provides further details about my qualifications and experiences.
-     I would welcome the opportunity to discuss how my background, skills, and
-     passion align with the needs of your company. Thank you for considering my
-     application. I look forward to the possibility of contributing to your team.
+     With <years_experience> years of experience in <area>. For example, in my previous role at <previous_company>,
+     I <accomplishments>. I look forward to the possibility of contributing to your team.
      Warm regards, <sender>"
   }
 )
